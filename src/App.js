@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+// import About from "./components/About";
 import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
@@ -33,14 +34,18 @@ function App() {
     }, 2000)
   }
 
+  const capitalize = (word)=>{
+    let lower = word.toLowerCase();
+    return lower.charAt(0).toUpperCase() + lower.slice(1);
+}
 
   return (
     <>
     <Navbar title="TextUtils" showSearchBox={false} mode={mode} toggleMode={toggleMode} />
-    <Alert alert={alert} />
+    <Alert alert={alert} capitalize={capitalize} />
     <div className="container my-3">
-      <TextForm heading="Enter your text to analyze" mode={mode} showAlert={showAlert} />
-      {/* <About /> */}
+      <TextForm heading="Enter your text to analyze" mode={mode} showAlert={showAlert} /*capitalize={capitalize}*/ />
+      {/* <About mode={mode} /> */}
     </div>
     </>
   );

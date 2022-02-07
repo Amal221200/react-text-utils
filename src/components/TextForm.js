@@ -31,6 +31,12 @@ const TextForm = ({ heading, mode, showAlert }) => {
         setText(newText.join(" "))
     }
 
+    // const capitalize = () =>{
+    //     const newText = text.split('.');
+
+    //     newText.forEach(text =>)
+    // }
+
     const backSpace = () => {
         const newText = text.slice(0, text.length - 1)
         setText(newText);
