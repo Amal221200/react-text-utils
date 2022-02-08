@@ -28,13 +28,11 @@ const TextForm = ({ heading, mode, showAlert, capitalize }) => {
     }
 
     const handleCopy = () => {
-        let text = document.getElementById('myBox');
 
-        if (text.value === "") {
+        if (text === "") {
             showAlert('Enter some text first', 'warning');
         } else {
-            text.select();
-            navigator.clipboard.writeText(text.value);
+            navigator.clipboard.writeText(text);
             showAlert('Text Copied', 'success');
         }
 
@@ -44,7 +42,7 @@ const TextForm = ({ heading, mode, showAlert, capitalize }) => {
         if (text === "") {
             showAlert('Enter some text first', 'warning');
         } else {
-            const newText = text.split(/[ ]+/)
+            const newText = text.split(/\s+/)
             setText(newText.join(" "))
         }
     }
@@ -53,11 +51,12 @@ const TextForm = ({ heading, mode, showAlert, capitalize }) => {
         if (text === "") {
             showAlert('Enter some text first', 'warning')
         } else {
-            const newText = text.split('. ');
-            console.log(newText[1])
+            const newText = text.split(/[.]\s+/).filter(e => e.length !== 0);
+            console.log(newText)
             let newString = "";
             newText.forEach(sent => {
-                newString += `${capitalize(sent)}. `
+                sent =  sent+"."
+                newString += `${capitalize(sent)} `
             })
             console.log(capitalize("success"))
             setText(newString);
@@ -75,8 +74,8 @@ const TextForm = ({ heading, mode, showAlert, capitalize }) => {
     }
 
     const numberOfWords = (text) => {
-        let number = text.split(" ").filter(e => e.length !== 0).length;
-
+        let number = text.split(/\s+/).filter(e => e.length !== 0).length;
+        // console.log(text.split(/\s+/).filter(e => e.length !== 0))
         // if (text === "") {
         //     number = 0;
         // } else if (text.lastIndexOf(" ") === (text.length - 1)) {
@@ -89,7 +88,7 @@ const TextForm = ({ heading, mode, showAlert, capitalize }) => {
     }
 
     const numberOfCharacter = (text) => {
-        let words = text.split(" ").filter(e => e.length !== 0);
+        let words = text.split(/\s+/).filter(e => e.length !== 0);
         return words.join('').length;
     }
 
