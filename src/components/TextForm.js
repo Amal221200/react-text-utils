@@ -52,15 +52,15 @@ const TextForm = ({ heading, mode, showAlert, capitalize }) => {
             showAlert('Enter some text first', 'warning')
         } else {
             const newText = text.split(/[.]\s+/).filter(e => e.length !== 0);
-            console.log(newText)
+            // console.log(newText)
             let newString = "";
             newText.forEach(sent => {
                 sent =  sent+"."
                 newString += `${capitalize(sent)} `
             })
-            console.log(capitalize("success"))
+            // console.log(capitalize("success"))
             setText(newString);
-            console.log();
+            // console.log();
         }
     }
 
@@ -75,15 +75,6 @@ const TextForm = ({ heading, mode, showAlert, capitalize }) => {
 
     const numberOfWords = (text) => {
         let number = text.split(/\s+/).filter(e => e.length !== 0).length;
-        // console.log(text.split(/\s+/).filter(e => e.length !== 0))
-        // if (text === "") {
-        //     number = 0;
-        // } else if (text.lastIndexOf(" ") === (text.length - 1)) {
-        //     number = text.split(" ").length - 1;
-        // } else {
-        //     number = text.split(" ").length;
-        // }
-
         return number;
     }
 
